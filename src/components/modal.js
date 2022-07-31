@@ -5,8 +5,8 @@ export default function DeleteModal({ open, handleClose, handleDelete }) {
       className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
       id="my-modal"
     >
-      <div class="relative top-20 mx-auto px-7 py-8 border w-96 shadow-lg rounded-md bg-white">
-        <div class="">
+      <div className="relative top-20 mx-auto px-7 py-8 border w-96 shadow-lg rounded-md bg-white">
+        <div>
         <h4 className="font-bold mb-2 text-xl">Delete Comment</h4>
         <p className="text-slate-500 mb-5">Are you sure you want to delete this comment?This will remove the comment and can't be undone.</p>
         <div className="flex justify-center items-stretch">

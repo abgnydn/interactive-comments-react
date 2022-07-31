@@ -22,7 +22,6 @@ export default function CommentsList({
             <div className="flex flex-col">
               <div className="flex flex-row place-content-between">
                 <div className="flex flex-row">
-                  [//FIXME: find a way to show images]
                   <img
                     src="./images/avatars/image-amyrobson.png"
                     className="w-10 h-10 rounded-full mr-3"
