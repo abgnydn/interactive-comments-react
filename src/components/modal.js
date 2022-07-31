@@ -1,4 +1,17 @@
-export default function DeleteModal({ open, handleClose, handleDelete }) {
+import axios from 'axios';
+
+export default function DeleteModal({ open, handleClose, id}) {
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+
+    axios.delete(`http://localhost:3000/comments/${id}`)
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
+  };
+  
   return (
     <div className={open ? "block" : "hidden"}>
     <div
