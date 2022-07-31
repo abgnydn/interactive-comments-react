@@ -1,25 +1,68 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import CommentsList from "./commentsList";
+import CommentForm from "./createComment";
+import DeleteModal from "./modal";
 
-function App() {
+export default function App() {
+  const [comments, setComments] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+  const currentUserId = 4;
+  const [open,setOpen] = useState(false);  
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false)
+
+  useEffect(() => {
+    fetch("http://localhost:3000/comments")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => setComments(data));
+  }, []);
+
+
+
+  useEffect(() => {
+    fetch("http://localhost:3000/currentuser")
+      .then((res) => {
+        return res.json();
+      })
+      .then((userData) => setCurrentUser(userData));
+  }, []);
+
+
+  const handleDelete = (id) => {
+    const newComments = comments.filter((comment) => comment.id !== id);
+  };
+  const handleIncrement = (id) => {
+    const score = comments[id].score;
+    const newScore = Number(score);
+  };
+  const handleDecrement = (id) => {
+    const score = comments[id].score;
+  };
+  const handleReply = (id) => {};
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <div>
+      {currentUser && comments && (
+        <CommentsList
+          comments={comments}
+          handleDelete={handleDelete}
+          handleIncrement={handleIncrement}
+          handleReply={handleReply}
+          handleDecrement={handleDecrement}
+          currentUser={currentUser}
+          handleOpen={handleOpen}
+          
+        />
+      )}
+      
+    </div>
+    <div>
+      {currentUser && <CommentForm currentUser={currentUser} currentUserId={currentUserId} />}
+    </div>
+      <DeleteModal handleClose={handleClose} open={open} />
     </div>
   );
 }
-
-export default App;

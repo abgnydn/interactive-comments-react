@@ -3,13 +3,14 @@ import ScoreButton from "./scoreButton";
 import ReplyButton from "./replyButton";
 export default function CommentsList({
   comments,
-  handleDelete,
   handleIncrement,
   handleDecrement,
   handleReply,
+  currentUser,
+  handleOpen
 }) {
   return (
-    <div className="grid h-screen place-items-center py-20">
+    <div className="grid place-items-center py-20">
       {comments.map((comment) => (
         <div key={comment.id}>
           <div className="flex rounded-xl max-w-2xl p-6 bg-white my-3">
@@ -35,7 +36,7 @@ export default function CommentsList({
                   </div>
                 </div>
                 <div>
-                    <ReplyButton/>
+                    <ReplyButton handleReply={handleReply}/>
                 </div>
               </div>
 
@@ -48,7 +49,9 @@ export default function CommentsList({
                 replies={comment.replies}
                 handleIncrement={handleIncrement}
                 handleReply={handleReply}
-              />{" "}
+                currentUser={currentUser}
+                handleOpen={handleOpen}
+              />
             </div>
           )}
         </div>
