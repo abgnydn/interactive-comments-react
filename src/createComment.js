@@ -1,14 +1,14 @@
 import { useState } from "react";
 import axios from 'axios';
 
-export default function CommentForm({ currentUser, currentUserId }) {
+export default function CommentForm({ currentUser, comments }) {
   const [comment, setComment] = useState("");
   const API_URL = 'http://localhost:3000/comments';
-
+    const [id, setId] = useState(Object.keys(comments).length + 1);
   const handleSubmit = (e) => {
     e.preventDefault();
     const newComment = {
-      id: currentUserId,
+      id: id,
       content: comment,
       createdAt: "",
       score: 0,
@@ -21,7 +21,9 @@ export default function CommentForm({ currentUser, currentUserId }) {
       .then((res) => {
         console.log(res);
         console.log(res.data);
-      });
+      }).then(
+        setId(id + 1)
+      );
   };
 
   return (
