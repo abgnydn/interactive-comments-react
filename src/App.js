@@ -6,7 +6,6 @@ import DeleteModal from "./components/modal";
 export default function App() {
   const [comments, setComments] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
-  const currentUserId = 4;
   const [open,setOpen] = useState(false);  
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false)
@@ -60,7 +59,7 @@ export default function App() {
       
     </div>
     <div>
-      {currentUser && <CommentForm currentUser={currentUser} currentUserId={currentUserId} />}
+      {currentUser && <CommentForm currentUser={currentUser} comments={comments} />}
     </div>
       <DeleteModal handleClose={handleClose} open={open} />
     </div>

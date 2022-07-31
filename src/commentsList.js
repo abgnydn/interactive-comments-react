@@ -13,7 +13,7 @@ export default function CommentsList({
     <div className="grid place-items-center py-20">
       {comments.map((comment) => (
         <div key={comment.id}>
-          <div className="flex rounded-xl max-w-2xl p-6 bg-white my-3">
+          <div className="flex rounded-xl max-w-2xl p-6 bg-white my-3 min-w-2xl">
             <ScoreButton
               handleDecrement={handleDecrement}
               handleIncrement={handleIncrement}

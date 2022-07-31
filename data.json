@@ -65,8 +65,36 @@
       ]
     },
     {
+      "id": 3,
+      "content": "asddasasd",
+      "createdAt": "",
+      "score": 0,
+      "user": {
+        "image": {
+          "png": "./images/avatars/image-juliusomo.png",
+          "webp": "./images/avatars/image-juliusomo.webp"
+        },
+        "username": "juliusomo"
+      },
+      "replies": []
+    },
+    {
       "id": 4,
-      "content": "asdasds",
+      "content": "asdasdasds",
+      "createdAt": "",
+      "score": 0,
+      "user": {
+        "image": {
+          "png": "./images/avatars/image-juliusomo.png",
+          "webp": "./images/avatars/image-juliusomo.webp"
+        },
+        "username": "juliusomo"
+      },
+      "replies": []
+    },
+    {
+      "id": 5,
+      "content": "asdasdasdas",
       "createdAt": "",
       "score": 0,
       "user": {
