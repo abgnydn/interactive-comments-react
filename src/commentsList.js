@@ -1,6 +1,9 @@
 import Replies from "./replies";
 import ScoreButton from "./components/scoreButton";
 import ReplyButton from "./components/replyButton";
+import DeleteButton from "./components/deleteButton";
+
+
 export default function CommentsList({
   comments,
   handleIncrement,
@@ -9,6 +12,7 @@ export default function CommentsList({
   currentUser,
   handleOpen
 }) {
+
   return (
     <div className="grid place-items-center py-20">
       {comments.map((comment) => (
@@ -36,7 +40,8 @@ export default function CommentsList({
                   </div>
                 </div>
                 <div>
-                    <ReplyButton handleReply={handleReply}/>
+                {comment.user.username === currentUser.username ?  <DeleteButton handleOpen={handleOpen} id={comment.id}/> : <ReplyButton handleReply={handleReply}/> }
+
                 </div>
               </div>
 

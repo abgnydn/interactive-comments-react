@@ -1,6 +1,6 @@
 import { GoReply } from "react-icons/go";
 
-export default function ReplyButton({handleReply,reply}){
+export default function ReplyButton({handleReply}){
     return (
         <div>
             <button onClick={handleReply}>
