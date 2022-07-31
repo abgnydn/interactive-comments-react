@@ -1,6 +1,6 @@
-import ScoreButton from "./scoreButton";
-import ReplyButton from "./replyButton";
-import DeleteButton from "./deleteButton";
+import ScoreButton from "./components/scoreButton";
+import ReplyButton from "./components/replyButton";
+import DeleteButton from "./components/deleteButton";
 export default function Replies({
   replies,
   handleDecrement,

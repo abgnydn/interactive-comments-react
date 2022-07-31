@@ -1,6 +1,6 @@
 import Replies from "./replies";
-import ScoreButton from "./scoreButton";
-import ReplyButton from "./replyButton";
+import ScoreButton from "./components/scoreButton";
+import ReplyButton from "./components/replyButton";
 export default function CommentsList({
   comments,
   handleIncrement,

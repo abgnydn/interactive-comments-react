@@ -15,7 +15,8 @@ export default function CommentForm({currentUser, currentUserId}){
         fetch('http://localhost:3001/comments', {
           method: 'POST',
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newComment)}).then(() => {
+          body: JSON.stringify(newComment)})
+          .then(() => {
           console.log('new comment added');
         })
       }

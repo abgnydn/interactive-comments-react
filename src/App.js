@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import CommentsList from "./commentsList";
 import CommentForm from "./createComment";
-import DeleteModal from "./modal";
+import DeleteModal from "./components/modal";
 
 export default function App() {
   const [comments, setComments] = useState(null);
