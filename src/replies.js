@@ -1,21 +1,23 @@
-import ScoreButton from "./components/scoreButton";
-import ReplyButton from "./components/replyButton";
-import DeleteButton from "./components/deleteButton";
+import ScoreButton from "./scoreButton";
+import ReplyButton from "./replyButton";
+import DeleteButton from "./deleteButton";
+import ReplySection from "./replySection";
 export default function Replies({
   replies,
   handleDecrement,
   handleIncrement,
   handleReply,
   currentUser,
-  handleOpen
+  handleOpen,
 }) {
   return (
     <div className="flex flex-col">
+     
       {replies.map((reply) => (
         <div className="flex flex-row" key={reply.id}>
             <div className="block w-10 mr-12 border-r-2 h-100">
             </div>
-          <div className="flex rounded-xl max-w-xl p-6 bg-white my-3">
+          <div className="flex rounded-xl p-6 bg-white my-3">
             <ScoreButton
               handleDecrement={handleDecrement}
               handleIncrement={handleIncrement}
@@ -43,8 +45,10 @@ export default function Replies({
               </div>
 
               <p className="text-slate-600">{reply.content}</p>
+
             </div>
           </div>
+          <ReplySection reply={reply} currentUser={currentUser}/>
         </div>
       ))}
     </div>
