@@ -4,11 +4,10 @@ import axios from 'axios';
 export default function CommentForm({ currentUser, comments }) {
   const [comment, setComment] = useState("");
   const API_URL = 'http://localhost:3000/comments';
-    const [id, setId] = useState(Object.keys(comments).length + 1);
   const handleSubmit = (e) => {
     e.preventDefault();
     const newComment = {
-      id: id,
+
       content: comment,
       createdAt: "",
       score: 0,
@@ -21,18 +20,16 @@ export default function CommentForm({ currentUser, comments }) {
       .then((res) => {
         console.log(res);
         console.log(res.data);
-      }).then(
-        setId(id + 1)
-      );
+      }).then.then(window.location.reload(false));
   };
 
   return (
     <div className="grid place-items-center">
-      <div className="flex flex-row max-w-2xl p-6 bg-white rounded-xl">
-        <form onSubmit={handleSubmit} className="grid grid-cols-12 gap-2">
+      <div className="flex flex-row lg:w-3/5 md:w-2/3 sm:w-full p-6 bg-white rounded-xl">
+        <form onSubmit={handleSubmit} className="grid grid-cols-12 gap-2 w-full">
           <img
             src={currentUser.image.png}
-            className="rounded-full w-4 h-4 col-span-1"
+            className="rounded-full w-10 h-10 col-span-1"
             alt=""
           ></img>
           <textarea
