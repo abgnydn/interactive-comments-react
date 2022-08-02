@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import CommentsList from "./commentsList";
 import CommentForm from "./createComment";
-import DeleteModal from "./components/modal";
 
 export default function App() {
   const [comments, setComments] = useState(null);
@@ -24,14 +23,8 @@ export default function App() {
   }, []);
 
 
-  const handleIncrement = (id) => {
-    const score = comments[id].score;
-    const newScore = Number(score);
-  };
-  const handleDecrement = (id) => {
-    const score = comments[id].score;
-  };
-  const handleReply = (id) => {};
+
+
 
   return (
     <>
@@ -39,10 +32,6 @@ export default function App() {
         {currentUser && comments && (
           <CommentsList
             comments={comments}
-            handleDelete={handleDelete}
-            handleIncrement={handleIncrement}
-            handleReply={handleReply}
-            handleDecrement={handleDecrement}
             currentUser={currentUser}
           />
         )}

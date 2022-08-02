@@ -65,8 +65,7 @@
       ]
     },
     {
-      "id": 4,
-      "content": "asdasdasds",
+      "content": "asdasdas",
       "createdAt": "",
       "score": 0,
       "user": {
@@ -76,11 +75,11 @@
         },
         "username": "juliusomo"
       },
-      "replies": []
+      "replies": [],
+      "id": 4
     },
     {
-      "id": 5,
-      "content": "asdasdasdas",
+      "content": "asdasds",
       "createdAt": "",
       "score": 0,
       "user": {
@@ -90,7 +89,8 @@
         },
         "username": "juliusomo"
       },
-      "replies": []
+      "replies": [],
+      "id": 5
     }
   ]
 }
