@@ -1,46 +1,53 @@
 import { useState } from "react";
-export default function EditSection({ currentUser, visibility }) {
-  const [edit, setEdit] = useState("");
-  const handleSubmit = (e) => {
+import axios from "axios";
+
+export default function EditSection({ comment }) {
+  const [edit, setEdit] = useState(comment.content);
+  const handleSubmit = (e, id) => {
     e.preventDefault();
+    const updatedComment = {
+      id: comment[id].id,
+      content: edit,
+      createdAt: comment[id].createdAt,
+      score: comment[id].score,
+      user: comment[id].user,
+      replies: comment[id].replies,
+    };
+
+    axios
+      .put(`http://localhost:3000/comments/{:id}`, {
+        updatedComment,
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setEdit(e.target.value);
   };
   return (
-    <div className={visibility ? "block" : "hidden"}>
-      <div className="flex flex-col ">
-        <div className="flex flex-row ">
-          <div className="flex rounded-xl p-6 bg-white my-3 w-full ">
-            <div className="flex flex-col w-full">
-              <div className="flex flex-row">
-                <div className="flex flex-row w-full">
-                  <form
-                    onSubmit={handleSubmit}
-                    className="grid grid-cols-12 gap-2 w-full"
-                  >
-                    <img
-                      src={currentUser.image.webp}
-                      className="w-10 h-10 rounded-full mr-3 col-span-1"
-                      alt=""
-                    ></img>
-                    <textarea
-                      required
-                      value={edit}
-                      onChange={(e) => setEdit(e.target.value)}
-                      placeholder="Add a comment..."
-                      cols="50"
-                      rows="4"
-                      className="col-span-8 border-slate-300 border rounded-sm p-3 resize-none"
-
-                    ></textarea>
-                    <button className="text-white bg-purple-500 font-bold rounded-lg h-2/5 col-span-3 mx-3">
-                      EDIT
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div className="flex min-w-max">
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-flow-row grid-rows-6 w-full mt-2  gap-5"
+        id={comment.id}
+      >
+        <textarea
+          required
+          value={edit}
+          onChange={handleChange}
+          placeholder=""
+          cols="50"
+          rows="4"
+          className="row-span-4 border-slate-300 border rounded-sm p-3 resize-none"
+        ></textarea>
+        <div className="flex content-end justify-end row-span-2">
+          <button className="text-white bg-purple-500 font-bold rounded-lg ml-3 w-1/4">
+            UPDATE
+          </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
