@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
-import DeleteModal from "./modal";
+import DeleteModal from "../modal";
 
-export default function DeleteButton ({id}){
-    const [open,setOpen] = useState(false);  
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false)
+export default function DeleteButton ({id,handleOpen,handleClose,open}){
+    
     return (
         <>
         <div className="text-red-500 font-bold">

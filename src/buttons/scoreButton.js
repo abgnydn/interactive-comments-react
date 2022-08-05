@@ -17,7 +17,7 @@ export default function ScoreButton({
     console.log(decreasedScore);
   };
   return (
-    <div className="flex flex-col rounded-lg bg-slate-100 h-28 my-auto place-content-around mr-4">
+    <div className="flex flex-col rounded-lg bg-slate-100 h-28 place-content-around mr-4 ">
       <button onClick={handleIncrement} className="text-slate-300  w-10 font-bold text-xl">
         +
       </button>

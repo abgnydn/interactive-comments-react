@@ -1,6 +1,6 @@
 import { MdOutlineModeEditOutline } from "react-icons/md";
-
 export default function EditButton ({handleEdit}){
+    
     return (
         <>
         <div className="text-purple-500 font-bold ml-4">
