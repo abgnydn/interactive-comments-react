@@ -1,24 +1,42 @@
-import {  useState } from "react";
+import { useState } from "react";
+import axios from "axios";
 export default function ReplySection({
   currentUser,
   visibility,
-  id,
   replySection,
   comment,
-  reply
+  reply,
 }) {
-
-  const userName = `@${replySection ? reply.user.username : comment.user.username}`;
-  const [newReply, setNewReply] = useState(userName);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  const userName = replySection ? reply.user.username : comment.user.username;
+  const id = comment.replies.length !== 0 ? (comment.replies.length + 1) : 1;
+  const [newReplyContent, setNewReplyContent] = useState(userName);
+  const API_URL = "http://localhost:3000/comments";
   const handleChange = (e) => {
     e.preventDefault();
-    setNewReply(e.target.value);
+    setNewReplyContent(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const newReply = {
+      id: id,
+      content: newReplyContent,
+      createdAt: "",
+      score: 0,
+      replyingTo: userName,
+      user: currentUser,
+    };
+    comment.replies.push(newReply);
+    
+    axios.put(`${API_URL}/${comment.id}`, comment).then((res) => {
+      console.log(res);
+      console.log(res.data);
+    });
+  
   };
   return (
-    <div className={visibility ? "block" : "hidden"} key={id}>
+    <div className={visibility ? "block" : "hidden"}>
       <div className="flex p-0 m-0 bg-transparent flex-initial w-full">
         {replySection && (
           <div className="block w-10 mr-12 border-r-2 h-100"></div>
@@ -36,7 +54,7 @@ export default function ReplySection({
               ></img>
               <textarea
                 required
-                value={newReply}
+                value={newReplyContent}
                 onChange={handleChange}
                 placeholder="Add a comment..."
                 cols="50"
