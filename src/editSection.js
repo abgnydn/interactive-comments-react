@@ -22,6 +22,7 @@ export default function EditSection({ comment }) {
       .catch((err) => console.log(err));
   };
 
+  
   const handleChange = (e) => {
     e.preventDefault();
     setEdit(e.target.value);
@@ -43,7 +44,7 @@ export default function EditSection({ comment }) {
           className="row-span-4 border-slate-300 border rounded-sm p-3 resize-none"
         ></textarea>
         <div className="flex content-end justify-end row-span-2">
-          <button className="text-white bg-purple-500 font-bold rounded-lg ml-3 w-1/4">
+          <button className="text-white bg-purple-500 font-bold rounded-lg ml-3 w-1/4" >
             UPDATE
           </button>
         </div>

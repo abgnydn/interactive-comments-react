@@ -21,9 +21,8 @@ const Comment = ({ comment, currentUser }) => {
     setEditSectionVisibility(!editSectionVisibility);
     setReplySectionVisibility(replySectionVisibility);
 
-    //TODO: Control edit section and reply section visibility with the id.
   };
-  const handleReply = (e, key) => {
+  const handleReply = (e) => {
     e.preventDefault();
     setEditSectionVisibility(editSectionVisibility);
     setReplySectionVisibility(!replySectionVisibility);
@@ -94,7 +93,6 @@ const Comment = ({ comment, currentUser }) => {
           )}
       <div>
         <ReplySection
-          id={comment.id}
           comment={comment}
           currentUser={currentUser}
           visibility={replySectionVisibility}

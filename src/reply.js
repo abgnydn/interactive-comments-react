@@ -87,12 +87,12 @@ const Reply = ({
       {reply && (
         <div>
           <ReplySection
-            id={reply.id}
-            reply={reply}
+            replyId={reply.id}
             comment={comment}
             currentUser={currentUser}
             visibility={replySectionVisibility}
             replySection={replySection}
+            reply={reply}
           />
         </div>
       )}
